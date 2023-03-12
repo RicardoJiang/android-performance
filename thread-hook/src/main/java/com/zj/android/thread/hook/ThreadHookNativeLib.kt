@@ -1,6 +1,12 @@
 package com.zj.android.thread.hook
 
+import com.bytedance.android.bytehook.ByteHook
+
 class ThreadHookNativeLib {
+
+    fun initHook() {
+        ByteHook.init()
+    }
 
     /**
      * A native method that is implemented by the 'hook' native library,
