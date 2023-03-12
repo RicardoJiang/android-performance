@@ -6,7 +6,10 @@ class ThreadHookNativeLib {
 
     fun initHook() {
         ByteHook.init()
+        hookThread()
     }
+
+    external fun hookThread()
 
     /**
      * A native method that is implemented by the 'hook' native library,
