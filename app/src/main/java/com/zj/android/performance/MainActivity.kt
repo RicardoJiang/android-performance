@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
             thread(start = true) {
                 while (true) {
                     Thread.sleep(1000)
-                    println("here Test123")
                 }
             }
         }
