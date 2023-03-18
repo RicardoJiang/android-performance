@@ -1,9 +1,9 @@
 package com.zj.android.performance
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,18 +13,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        findViewById<Button>(R.id.btn_thread_test).setOnClickListener {
-            testThread()
+        findViewById<Button>(R.id.btn_thread_hook).setOnClickListener {
+            startActivity(Intent(this, ThreadHookActivity::class.java))
         }
-    }
-
-    private fun testThread() {
-        for (i in 0 until 100) {
-            thread(start = true) {
-                while (true) {
-                    Thread.sleep(1000)
-                }
-            }
+        findViewById<Button>(R.id.btn_memory_hook).setOnClickListener {
+            startActivity(Intent(this, MemoryHookActivity::class.java))
         }
     }
 }

@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Androidperformance"
         tools:targetApi="31">
         <activity
+            android:name=".ThreadHookActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MemoryHookActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
