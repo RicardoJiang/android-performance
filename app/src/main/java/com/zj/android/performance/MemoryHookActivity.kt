@@ -3,6 +3,7 @@ package com.zj.android.performance
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.zj.android.memory.hook.MemoryNativeLib
 import com.zj.android.performance.jni.NativeLibTest
 
 class MemoryHookActivity : AppCompatActivity() {
@@ -14,7 +15,7 @@ class MemoryHookActivity : AppCompatActivity() {
 
     private fun initView() {
         findViewById<Button>(R.id.btn_open_memory_hook).setOnClickListener {
-
+            MemoryNativeLib().initHook()
         }
         findViewById<Button>(R.id.btn_malloc).setOnClickListener {
             NativeLibTest().testMalloc(88 * 1024 * 1024)

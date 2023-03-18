@@ -14,6 +14,8 @@ project("memory-hook")
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
 
+find_package(bytehook REQUIRED CONFIG)
+
 add_library( # Sets the name of the library.
         memory-hook
 
@@ -42,7 +44,7 @@ find_library( # Sets the name of the path variable.
 
 target_link_libraries( # Specifies the target library.
         memory-hook
-
+        bytehook::bytehook
         # Links the target library to the log library
         # included in the NDK.
         ${log-lib})

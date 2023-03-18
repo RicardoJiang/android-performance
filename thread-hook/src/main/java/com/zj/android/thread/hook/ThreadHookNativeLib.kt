@@ -9,7 +9,7 @@ class ThreadHookNativeLib {
         hookThread()
     }
 
-    external fun hookThread()
+    private external fun hookThread()
 
     /**
      * A native method that is implemented by the 'hook' native library,

@@ -1,12 +1,15 @@
 package com.zj.android.memory.hook
 
+import com.bytedance.android.bytehook.ByteHook
+
 class MemoryNativeLib {
 
-    /**
-     * A native method that is implemented by the 'hook' native library,
-     * which is packaged with this application.
-     */
-    external fun stringFromJNI(): String
+    fun initHook() {
+        ByteHook.init()
+        hookMemory()
+    }
+
+    private external fun hookMemory()
 
     companion object {
         // Used to load the 'hook' library on application startup.
