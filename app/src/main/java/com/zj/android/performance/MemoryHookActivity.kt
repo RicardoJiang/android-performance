@@ -24,7 +24,7 @@ class MemoryHookActivity : AppCompatActivity() {
             NativeLibTest().testFree()
         }
         findViewById<Button>(R.id.btn_dump).setOnClickListener {
-
+            MemoryNativeLib().dump()
         }
     }
 }

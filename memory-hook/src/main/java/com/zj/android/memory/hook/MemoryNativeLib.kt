@@ -9,7 +9,9 @@ class MemoryNativeLib {
         hookMemory()
     }
 
-    private external fun hookMemory()
+    external fun hookMemory()
+
+    external fun dump()
 
     companion object {
         // Used to load the 'hook' library on application startup.
