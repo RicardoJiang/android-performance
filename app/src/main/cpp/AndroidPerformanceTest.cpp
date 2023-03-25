@@ -40,3 +40,10 @@ Java_com_zj_android_performance_jni_NativeLibTest_testFree(
         LOG("objList size %d", objList.size());
     }
 }
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_zj_android_performance_jni_NativeLibTest_nativeCrash(
+        JNIEnv *env,
+        jobject /* this */) {
+    throw "Native Crash!";
+}

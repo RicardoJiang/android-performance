@@ -8,10 +8,10 @@
     android:padding="16dp">
 
     <Button
-        android:id="@+id/java_air_cushion"
+        android:id="@+id/java_airbag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="开启Java 层安全气垫" />
+        android:text="开启Java 层安全气囊" />
 
     <Button
         android:id="@+id/btn_java_crash"
@@ -26,7 +26,7 @@
         android:text="触发子线程 Java Crash" />
 
     <Button
-        android:id="@+id/btn_test_thread"
+        android:id="@+id/btn_native_crash"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="触发 Native Crash" />
