@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:dividerPadding="16dp"
@@ -7,21 +8,28 @@
     android:padding="16dp">
 
     <Button
-        android:id="@+id/btn_thread_hook"
+        android:id="@+id/java_air_cushion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="线程 Hook" />
+        android:text="开启Java 层安全气垫" />
 
     <Button
-        android:id="@+id/btn_memory_hook"
+        android:id="@+id/btn_java_crash"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="内存 Hook" />
+        android:text="触发 Java Crash" />
 
     <Button
-        android:id="@+id/btn_stability_optimization"
+        android:id="@+id/btn_child_thread_java_crash"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="安全气垫" />
+        android:text="触发子线程 Java Crash" />
+
+    <Button
+        android:id="@+id/btn_test_thread"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="触发 Native Crash" />
+
 
 </LinearLayout>

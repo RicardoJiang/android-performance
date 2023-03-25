@@ -16,3 +16,4 @@ rootProject.name = "android-performance"
 include ':app'
 include ':thread-hook'
 include ':memory-hook'
+include ':stability-optimize'

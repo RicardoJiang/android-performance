@@ -19,6 +19,9 @@
             android:name=".MemoryHookActivity"
             android:exported="false" />
         <activity
+            android:name=".StabilityActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

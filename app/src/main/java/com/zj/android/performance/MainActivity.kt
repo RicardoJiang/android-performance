@@ -19,5 +19,8 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btn_memory_hook).setOnClickListener {
             startActivity(Intent(this, MemoryHookActivity::class.java))
         }
+        findViewById<Button>(R.id.btn_stability_optimization).setOnClickListener {
+            startActivity(Intent(this, StabilityActivity::class.java))
+        }
     }
 }
