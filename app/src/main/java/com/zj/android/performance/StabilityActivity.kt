@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.zj.android.performance.jni.NativeLibTest
+import com.zj.android.stability.optimize.JavaAirBagConfig
 import com.zj.android.stability.optimize.StabilityOptimize
 
 class StabilityActivity : AppCompatActivity() {
@@ -15,7 +16,22 @@ class StabilityActivity : AppCompatActivity() {
 
     private fun initView() {
         findViewById<View>(R.id.java_airbag).setOnClickListener {
-            StabilityOptimize.setUpJavaExceptionHandler()
+            StabilityOptimize.setUpJavaAirBag(
+                mutableListOf(
+                    JavaAirBagConfig(
+                        "java.lang.NullPointerException",
+                        "test java exception",
+                        "com.zj.android.performance.StabilityActivity",
+                        "initView\$lambda\$2"
+                    ),
+                    JavaAirBagConfig(
+                        "java.lang.NullPointerException",
+                        "test child thread java exception",
+                        "com.zj.android.performance.StabilityActivity",
+                        "initView\$lambda\$4\$lambda\$3"
+                    )
+                )
+            )
         }
         findViewById<View>(R.id.native_airbag).setOnClickListener {
             StabilityOptimize.setUpNativeAirBag(
