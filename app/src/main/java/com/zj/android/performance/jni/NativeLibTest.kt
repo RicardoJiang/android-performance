@@ -6,7 +6,9 @@ class NativeLibTest {
 
     external fun testFree()
 
-    external fun nativeCrash()
+    external fun nativeCrash1()
+
+    external fun nativeCrash2()
 
     companion object {
         // Used to load the 'hook' library on application startup.

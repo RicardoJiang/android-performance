@@ -14,6 +14,12 @@
         android:text="开启Java 层安全气囊" />
 
     <Button
+        android:id="@+id/native_airbag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="开启Native 层安全气囊" />
+
+    <Button
         android:id="@+id/btn_java_crash"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,10 +32,16 @@
         android:text="触发子线程 Java Crash" />
 
     <Button
-        android:id="@+id/btn_native_crash"
+        android:id="@+id/btn_native_crash1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="触发 Native Crash" />
+        android:text="触发 Native Crash1（已保护）" />
+
+    <Button
+        android:id="@+id/btn_native_crash2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="触发 Native Crash2（未保护）" />
 
 
 </LinearLayout>

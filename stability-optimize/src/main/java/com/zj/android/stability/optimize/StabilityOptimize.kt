@@ -20,6 +20,11 @@ object StabilityOptimize {
         }
     }
 
+    fun setUpNativeAirBag(signal: Int, soName: String, backtrace: String) {
+        Log.i("StabilityOptimize", "Native 安全气囊已开启")
+        StabilityNativeLib().openNativeAirBag(signal, soName, backtrace)
+    }
+
     private fun handleException(
         preDefaultExceptionHandler: Thread.UncaughtExceptionHandler,
         thread: Thread,

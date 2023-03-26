@@ -42,8 +42,17 @@ Java_com_zj_android_performance_jni_NativeLibTest_testFree(
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_zj_android_performance_jni_NativeLibTest_nativeCrash(
+Java_com_zj_android_performance_jni_NativeLibTest_nativeCrash1(
         JNIEnv *env,
         jobject /* this */) {
-    throw "Native Crash!";
+    LOG("已保护Native崩溃");
+    raise(SIGSEGV);
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_zj_android_performance_jni_NativeLibTest_nativeCrash2(
+        JNIEnv *env,
+        jobject /* this */) {
+    LOG("未保护Native崩溃");
+    raise(SIGSEGV);
 }

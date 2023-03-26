@@ -17,6 +17,13 @@ class StabilityActivity : AppCompatActivity() {
         findViewById<View>(R.id.java_airbag).setOnClickListener {
             StabilityOptimize.setUpJavaExceptionHandler()
         }
+        findViewById<View>(R.id.native_airbag).setOnClickListener {
+            StabilityOptimize.setUpNativeAirBag(
+                11,
+                "libandroid-performance.so",
+                "Java_com_zj_android_performance_jni_NativeLibTest_nativeCrash1"
+            )
+        }
         findViewById<View>(R.id.btn_java_crash).setOnClickListener {
             throw NullPointerException("test java exception")
         }
@@ -25,9 +32,11 @@ class StabilityActivity : AppCompatActivity() {
                 throw NullPointerException("test child thread java exception")
             }.start()
         }
-        findViewById<View>(R.id.btn_native_crash).setOnClickListener {
-            NativeLibTest().nativeCrash()
+        findViewById<View>(R.id.btn_native_crash1).setOnClickListener {
+            NativeLibTest().nativeCrash1()
         }
-
+        findViewById<View>(R.id.btn_native_crash2).setOnClickListener {
+            NativeLibTest().nativeCrash2()
+        }
     }
 }
