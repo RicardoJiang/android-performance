@@ -9,7 +9,6 @@ import android.webkit.WebView
 
 class DummyStartHelper {
     fun initCalculateTask(): Long {
-        Log.i("DummyStartHelper", "initCalculateTask")
         var result = 0L
         for (i in 0..1000) {
             for (j in 0..100) {
@@ -19,12 +18,10 @@ class DummyStartHelper {
                 }
             }
         }
-        Log.i("DummyStartHelper", "initCalculateTask End")
         return result
     }
 
     fun initSpTask(context: Context) {
-        Log.i("DummyStartHelper", "initSpTask")
         for (i in 0 until 100) {
             val sp = context.getSharedPreferences("performance${i}", Context.MODE_PRIVATE)
             for (j in 0 until 20) {
@@ -33,11 +30,9 @@ class DummyStartHelper {
                 editor.commit()
             }
         }
-        Log.i("DummyStartHelper", "initSpTask End")
     }
 
     fun initTriggerGcTask(context: Context) {
-        Log.i("DummyStartHelper", "triggerGc")
         val webViewList = mutableListOf<WebView>()
         for (i in 0 until 10) {
             val webView = WebView(context)
@@ -52,6 +47,5 @@ class DummyStartHelper {
             bitmapList.add(bitmap)
         }
         bitmapList.clear()
-        Log.i("DummyStartHelper", "triggerGc End")
     }
 }

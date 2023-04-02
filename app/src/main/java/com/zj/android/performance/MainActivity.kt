@@ -16,11 +16,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         initView()
         Log.i(
-            "DummyStartHelper",
-            Debug.getRuntimeStat("art.gc.gc-count") + "," +
-                    Debug.getRuntimeStat("art.gc.gc-time") + "," + Debug.getRuntimeStat(
-                "art.gc.blocking-gc-count"
-            ) + "," + Debug.getRuntimeStat("art.gc.blocking-gc-time")
+            "startup_optimize",
+            """
+                gcCount: ${Debug.getRuntimeStat("art.gc.gc-count")}
+                gc-time: ${Debug.getRuntimeStat("art.gc.gc-time")}
+                blocking-gc-count: ${Debug.getRuntimeStat("art.gc.blocking-gc-count")}
+                art.gc.blocking-gc-time: ${Debug.getRuntimeStat("art.gc.blocking-gc-time")}
+            """.trimIndent()
         )
     }
 

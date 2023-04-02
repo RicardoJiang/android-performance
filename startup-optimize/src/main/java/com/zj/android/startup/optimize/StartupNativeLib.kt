@@ -1,6 +1,6 @@
-package com.zj.android.stability.optimize
+package com.zj.android.startup.optimize
 
-internal class StabilityNativeLib {
+internal class StartupNativeLib {
 
     /**
      * A native method that is implemented by the 'optimize' native library,
@@ -8,12 +8,12 @@ internal class StabilityNativeLib {
      */
     external fun stringFromJNI(): String
 
-    external fun openNativeAirBag(signal: Int, soName: String, backtrace: String): Unit
+    external fun delayGC(): Unit
 
     companion object {
         // Used to load the 'optimize' library on application startup.
         init {
-            System.loadLibrary("stability-optimize")
+            System.loadLibrary("startup-optimize")
         }
     }
 }

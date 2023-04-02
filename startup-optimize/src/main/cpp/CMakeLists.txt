@@ -7,7 +7,7 @@ cmake_minimum_required(VERSION 3.22.1)
 
 # Declares and names the project.
 
-project("stability-optimize")
+project("startup-optimize")
 
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
@@ -15,14 +15,15 @@ project("stability-optimize")
 # Gradle automatically packages shared libraries with your APK.
 
 add_library( # Sets the name of the library.
-        stability-optimize
+        startup-optimize
 
         # Sets the library as a shared library.
         SHARED
 
         # Provides a relative path to your source file(s).
-        NativeAirBag.cpp
-        unwind-utils.cpp)
+        StartUpOptimize.cpp
+        enhanced_dlfcn.c
+        )
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -42,7 +43,7 @@ find_library( # Sets the name of the path variable.
 # build script, prebuilt third-party libraries, or system libraries.
 
 target_link_libraries( # Specifies the target library.
-        stability-optimize
+        startup-optimize
 
         # Links the target library to the log library
         # included in the NDK.
