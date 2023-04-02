@@ -4,6 +4,7 @@
 #include <dlfcn.h>
 #include "enhanced_dlfcn.h"
 #include <sys/mman.h>
+#include <sched.h>
 
 #define LOG_TAG            "startup_optimize"
 #define LOG(fmt, ...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, fmt, ##__VA_ARGS__)
@@ -34,7 +35,7 @@ void hookRun(void *thread) {
     //将虚函数表中的值还原成原函数，避免每次执行run函数时都会执行hook的方法
     replaceFunc(mSlot, originFun);
     //执行原来的Run方法
-    LOG("execute origin fun %p",originFun);
+    LOG("execute origin fun %p", originFun);
     ((void (*)(void *)) originFun)(thread);
 }
 
@@ -70,6 +71,20 @@ Java_com_zj_android_startup_optimize_StartupNativeLib_delayGC(
         jobject /* this */) {
     LOG("Open Startup Optimize");
     delayGC(env);
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_zj_android_startup_optimize_StartupNativeLib_bindCore(
+        JNIEnv *env,
+        jobject /* this */, jint thread_id, jint core) {
+    cpu_set_t mask;     //CPU核的集合
+    CPU_ZERO(&mask);     //将mask置空
+    CPU_SET(core, &mask);    //将需要绑定的cpu核设置给mask，核为序列0,1,2,3……
+    if (sched_setaffinity(thread_id, sizeof(mask), &mask) == -1) {     //将线程绑核
+        LOG("bind thread %d to core %d fail", thread_id, core);
+    } else {
+        LOG("bind thread %d to core %d success", thread_id, core);
+    }
 }
 
 extern "C" JNIEXPORT jstring JNICALL

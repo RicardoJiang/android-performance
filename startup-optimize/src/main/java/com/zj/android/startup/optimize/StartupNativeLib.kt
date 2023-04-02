@@ -10,6 +10,8 @@ internal class StartupNativeLib {
 
     external fun delayGC(): Unit
 
+    external fun bindCore(threadId: Int, core: Int): Unit
+
     companion object {
         // Used to load the 'optimize' library on application startup.
         init {
