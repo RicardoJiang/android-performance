@@ -6,26 +6,26 @@ import android.os.Bundle
 import android.os.Debug
 import android.util.Log
 import android.widget.Button
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.zj.android.startup.optimize.StartupOptimize
 
 class MainActivity : AppCompatActivity() {
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initView()
         StartupOptimize.bindCore()
-        Log.i(
-            "startup_optimize",
-            """
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Log.i(
+                "startup_optimize",
+                """
                 gcCount: ${Debug.getRuntimeStat("art.gc.gc-count")}
                 gc-time: ${Debug.getRuntimeStat("art.gc.gc-time")}
                 blocking-gc-count: ${Debug.getRuntimeStat("art.gc.blocking-gc-count")}
                 art.gc.blocking-gc-time: ${Debug.getRuntimeStat("art.gc.blocking-gc-time")}
             """.trimIndent()
-        )
+            )
+        }
     }
 
     private fun initView() {
