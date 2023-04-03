@@ -34,8 +34,8 @@ void hookRun(void *thread) {
     sleep(3);
     //将虚函数表中的值还原成原函数，避免每次执行run函数时都会执行hook的方法
     replaceFunc(mSlot, originFun);
-    //执行原来的Run方法
     LOG("execute origin fun %p", originFun);
+    //执行原来的Run方法
     ((void (*)(void *)) originFun)(thread);
 }
 
@@ -44,6 +44,7 @@ void delayGC(JNIEnv *env) {
     void *handle = enhanced_dlopen("/system/lib64/libart.so", RTLD_NOW);
     //通过符号拿到ConcurrentGCTask对象地址
     void *taskAddress = enhanced_dlsym(handle, "_ZTVN3art2gc4Heap16ConcurrentGCTaskE");
+    //通过符号拿到run方法
     void *runAddress = enhanced_dlsym(handle, "_ZN3art2gc4Heap16ConcurrentGCTask3RunEPNS_6ThreadE");
     /*由于 ConcurrentGCTask 只有五个虚函数，所以我们只需要查询前五个地址即可。
     */
@@ -60,8 +61,9 @@ void delayGC(JNIEnv *env) {
             mSlot = (void **) taskAddress + i;
         }
     }
-    // 将虚函数表中的值替换成我们hook函数的地址
+    // 保存原有函数
     originFun = *mSlot;
+    // 将虚函数表中的值替换成我们hook函数的地址
     replaceFunc(mSlot, (void *) &hookRun);
 }
 
