@@ -29,7 +29,7 @@ bool replaceFunc(void **slot, void *func) {
 
 //我们的 hook 函数
 void hookRun(void *thread) {
-    //休眠2秒
+    //休眠3秒
     LOG("gc hook Run");
     sleep(3);
     //将虚函数表中的值还原成原函数，避免每次执行run函数时都会执行hook的方法
@@ -39,7 +39,7 @@ void hookRun(void *thread) {
     ((void (*)(void *)) originFun)(thread);
 }
 
-void delayGC(JNIEnv *env) {
+void delayGC() {
     //以RTLD_NOW模式打开动态库libart.so，拿到句柄，RTLD_NOW即解析出每个未定义变量的地址
     void *handle = enhanced_dlopen("/system/lib64/libart.so", RTLD_NOW);
     //通过符号拿到ConcurrentGCTask对象地址
@@ -72,7 +72,7 @@ Java_com_zj_android_startup_optimize_StartupNativeLib_delayGC(
         JNIEnv *env,
         jobject /* this */) {
     LOG("Open Startup Optimize");
-    delayGC(env);
+    delayGC();
 }
 
 extern "C" JNIEXPORT void JNICALL
