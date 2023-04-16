@@ -24,4 +24,10 @@
         android:layout_height="wrap_content"
         android:text="安全气囊" />
 
+    <Button
+        android:id="@+id/btn_jank_page"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="卡顿页面" />
+
 </LinearLayout>

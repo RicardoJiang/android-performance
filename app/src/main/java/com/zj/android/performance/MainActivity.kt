@@ -7,6 +7,7 @@ import android.os.Debug
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.zj.android.performance.jank.JankActivity
 import com.zj.android.startup.optimize.StartupOptimize
 
 class MainActivity : AppCompatActivity() {
@@ -37,6 +38,9 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById<Button>(R.id.btn_stability_optimization).setOnClickListener {
             startActivity(Intent(this, StabilityActivity::class.java))
+        }
+        findViewById<Button>(R.id.btn_jank_page).setOnClickListener {
+            startActivity(Intent(this, JankActivity::class.java))
         }
     }
 }
