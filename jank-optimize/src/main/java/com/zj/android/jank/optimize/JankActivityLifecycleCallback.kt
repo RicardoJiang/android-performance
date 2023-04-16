@@ -25,6 +25,10 @@ internal class JankActivityLifecycleCallback : ActivityLifecycleCallbacks {
             var frozenJankCount = 0
 
             jankFrameData.forEach { frameData ->
+                Log.v(
+                    "Activity",
+                    frameData.states.firstOrNull { it.key == "Activity" }?.value ?: ""
+                )
                 Log.v("JankMonitor", frameData.toString())
                 val dropFrameCount = frameData.frameDurationUiNanos / singleFrameNanosDuration
                 if (dropFrameCount <= JankMonitor.SLIGHT_JANK_MULTIPIER) {
