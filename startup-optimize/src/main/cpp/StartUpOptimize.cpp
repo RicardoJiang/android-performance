@@ -42,7 +42,7 @@ void hookRun(void *thread) {
 void delayGC() {
     //以RTLD_NOW模式打开动态库libart.so，拿到句柄，RTLD_NOW即解析出每个未定义变量的地址
     void *handle = enhanced_dlopen("/system/lib64/libart.so", RTLD_NOW);
-    //通过符号拿到ConcurrentGCTask对象地址
+    //通过符号拿到ConcurrentGCTask类首地址
     void *taskAddress = enhanced_dlsym(handle, "_ZTVN3art2gc4Heap16ConcurrentGCTaskE");
     //通过符号拿到run方法
     void *runAddress = enhanced_dlsym(handle, "_ZN3art2gc4Heap16ConcurrentGCTask3RunEPNS_6ThreadE");
