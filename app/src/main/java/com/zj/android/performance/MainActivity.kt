@@ -42,5 +42,12 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btn_jank_page).setOnClickListener {
             startActivity(Intent(this, JankActivity::class.java))
         }
+        findViewById<Button>(R.id.btn_trigger_anr).setOnClickListener {
+            try {
+                Thread.sleep(20000)
+            } catch (e: InterruptedException) {
+                e.printStackTrace()
+            }
+        }
     }
 }

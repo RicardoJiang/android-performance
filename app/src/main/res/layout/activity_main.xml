@@ -30,4 +30,10 @@
         android:layout_height="wrap_content"
         android:text="卡顿页面" />
 
+    <Button
+        android:id="@+id/btn_trigger_anr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="触发 ANr" />
+
 </LinearLayout>
