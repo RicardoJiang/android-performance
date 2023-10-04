@@ -1,5 +1,7 @@
 package com.zj.android.startup.optimize
 
+import com.bytedance.shadowhook.ShadowHook
+
 internal class StartupNativeLib {
 
     /**
@@ -15,6 +17,9 @@ internal class StartupNativeLib {
     companion object {
         // Used to load the 'optimize' library on application startup.
         init {
+            ShadowHook.init(
+                ShadowHook.ConfigBuilder().setMode(ShadowHook.Mode.UNIQUE).setDebuggable(true).build()
+            )
             System.loadLibrary("startup-optimize")
         }
     }

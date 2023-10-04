@@ -13,6 +13,7 @@ project("startup-optimize")
 # or SHARED, and provides the relative paths to its source code.
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
+find_package(shadowhook REQUIRED CONFIG)
 
 add_library( # Sets the name of the library.
         startup-optimize
@@ -22,7 +23,6 @@ add_library( # Sets the name of the library.
 
         # Provides a relative path to your source file(s).
         StartUpOptimize.cpp
-        enhanced_dlfcn.c
         )
 
 # Searches for a specified prebuilt library and stores the path as a
@@ -44,6 +44,7 @@ find_library( # Sets the name of the path variable.
 
 target_link_libraries( # Specifies the target library.
         startup-optimize
+        shadowhook::shadowhook
 
         # Links the target library to the log library
         # included in the NDK.
