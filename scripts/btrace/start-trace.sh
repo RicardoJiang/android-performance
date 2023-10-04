@@ -31,6 +31,6 @@ fi
 
 echo "Trace duration is ${DURATION}s, the output file will be saved to $OUTPUT."
 
-$PYTHON2 $BASE_DIR/rheatrace/rheatrace.py -a com.zj.android.performance -t $DURATION -o $OUTPUT sched freq idle am wm gfx view binder_driver hal dalvik camera input res
+java -jar $BASE_DIR/rhea-trace-shell.jar -a com.zj.android.performance -t $DURATION -o $OUTPUT rhea.all sched -fullClassName -mainThreadOnly -m $PROJECT_DIR/app/build/generated/rhea_assets/methodMapping.txt
 open $(dirname $OUTPUT)
 

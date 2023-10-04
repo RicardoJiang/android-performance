@@ -8,7 +8,7 @@ pluginManagement {
     resolutionStrategy {
         eachPlugin {
             when (requested.id.id) {
-                "com.bytedance.rhea-trace" -> useModule("com.bytedance.btrace:rhea-gradle-plugin:1.0.1")
+                "com.bytedance.rhea-trace" -> useModule("com.bytedance.btrace:rhea-gradle-plugin:2.0.3-rc01")
             }
         }
     }
